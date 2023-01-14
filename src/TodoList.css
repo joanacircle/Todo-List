@@ -1,0 +1,44 @@
+.todo{
+  margin: 100px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-todo{
+  width: 200px;
+  height: 25px;
+}
+
+button{
+  height: 29px
+}
+
+.tasks{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid;
+  margin-top: 20px;
+}
+
+.tasks:hover{
+  background-color: gray;
+  opacity: 0.5;
+}
+
+div input{
+  margin-right: 10px;
+}
+
+.tasks input, .tasks p, .tasks a{
+  margin-right: 15px;
+}
+
+.tasks p {
+  width: 150px;
+}
+
+.finished{
+  text-decoration: line-through;
+}
