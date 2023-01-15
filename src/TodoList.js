@@ -22,8 +22,8 @@ function ToDo() {
         <button
           type="submit"
           onClick={() => {
-            const newItemlist = {id: +new Date(), item: inputItem, checked: false, edited: false  }
-            setItemList([...itemList, newItemlist])
+            const newItemList = {id: +new Date(), item: inputItem, checked: false, edited: false  }
+            setItemList([...itemList, newItemList])
             setInputItem('')
           }}
         >
@@ -43,10 +43,8 @@ function ToDo() {
                     checked={v.state}
                     onChange={(e) => {
                       const resetItemList = itemList.map((v2, i2) => {
-                        if (v2.id === v.id)
-                          return { ...v2, checked: !v2.checked}
-
-                        return { ...v2 }
+                        if (v2.id === v.id) return { ...v2, checked: !v2.checked}
+                        else{return { ...v2 }}
                       })
                       setItemList(resetItemList)
                     }}
@@ -56,10 +54,8 @@ function ToDo() {
                 <input type="text" value={v.item} onChange={(e)=>{
                   const value= e.target.value
                   const resetItemList = itemList.map((v2, i2) => {
-                    if (v2.id === v.id)
-                      return { ...v2, item:  value  }
-
-                    return { ...v2 }
+                    if (v2.id === v.id)return { ...v2, item:  value  }
+                    else{return { ...v2 }}
                   })
                   setItemList(resetItemList)
                 }}/>:
@@ -67,19 +63,19 @@ function ToDo() {
                 <li
                 onClick={()=>{
                   const resetItemList = itemList.map((v2, i2) => {
-                    if(v2.id === v.id)
-                      return {...v2, edited: !v2.edited }
-                    return {...v2}
+                    if(v2.id === v.id)return {...v2, edited: !v2.edited }
+                    else{return {...v2}}
                   })
                   setItemList(resetItemList)
                 }}
                 >📝</li>
                 <li
                   onClick={() => {
-                    const resetItemList = itemList.filter((v2, i2) => {
-                      if (v2.id === v.id)
-                        return !v2 === v
-                    })
+                    const resetItemList = itemList.filter((v2, i2) => 
+                    v2.id !== v.id
+                    )
+                    console.log(resetItemList)
+
                     setItemList(resetItemList)
                   }}
                 >
