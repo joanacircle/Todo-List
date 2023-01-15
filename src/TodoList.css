@@ -1,3 +1,4 @@
+/* all */
 .todo{
   margin: 100px auto;
   padding: 10px;
@@ -6,6 +7,7 @@
   align-items: center;
 }
 
+/* header */
 .add-todo{
   width: 200px;
   height: 25px;
@@ -15,11 +17,18 @@ button{
   height: 29px
 }
 
+/* body */
+ul{
+  list-style: none; 
+  padding: 0;
+}
+
 .tasks{
   display: flex;
   align-items: center;
   border-bottom: 1px solid;
-  margin-top: 20px;
+  padding: 10px 0px;
+  margin: 20px 0px;
 }
 
 .tasks:hover{
@@ -27,18 +36,21 @@ button{
   opacity: 0.5;
 }
 
+li{
+  margin-right: 15px;
+}
+
+/* body-checkbox */
 div input{
   margin-right: 10px;
 }
 
-.tasks input, .tasks p, .tasks a{
-  margin-right: 15px;
-}
-
-.tasks p {
+/* body-item-text */
+li.item{
   width: 150px;
 }
 
 .finished{
   text-decoration: line-through;
+  color: gray;
 }

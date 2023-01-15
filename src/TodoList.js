@@ -22,7 +22,7 @@ function ToDo() {
         <button
           type="submit"
           onClick={() => {
-            const newItemlist = { item: inputItem, checked: false }
+            const newItemlist = {id: +new Date(), item: inputItem, checked: false, edited: false  }
             setItemList([...itemList, newItemlist])
             setInputItem('')
           }}
@@ -32,41 +32,63 @@ function ToDo() {
       </div>
 
       <div className="task-container">
+      <ul>
         {itemList.length !== 0 &&
           itemList.map((v, i) => {
             return (
-              <div key={i} className="tasks">
-                <input
-                  type="checkbox"
-                  checked={v.state}
-                  onChange={(e) => {
-                    const resetItemState = itemList.map((v2, i2) => {
-                      if (v2.item === v.item)
-                        return { ...v2, checked: !v2.checked }
-                      return { ...v2 }
+              <div key={v.id} className="tasks">
+                <li>
+                  <input
+                    type="checkbox"
+                    checked={v.state}
+                    onChange={(e) => {
+                      const resetItemList = itemList.map((v2, i2) => {
+                        if (v2.id === v.id)
+                          return { ...v2, checked: !v2.checked}
+
+                        return { ...v2 }
+                      })
+                      setItemList(resetItemList)
+                    }}
+                  />  
+                </li>
+                {v.edited? 
+                <input type="text" value={v.item} onChange={(e)=>{
+                  const value= e.target.value
+                  const resetItemList = itemList.map((v2, i2) => {
+                    if (v2.id === v.id)
+                      return { ...v2, item:  value  }
+
+                    return { ...v2 }
+                  })
+                  setItemList(resetItemList)
+                }}/>:
+                <li className={`item ${v.checked ? 'finished' : ''}`}>{v.item}</li>}
+                <li
+                onClick={()=>{
+                  const resetItemList = itemList.map((v2, i2) => {
+                    if(v2.id === v.id)
+                      return {...v2, edited: !v2.edited }
+                    return {...v2}
+                  })
+                  setItemList(resetItemList)
+                }}
+                >📝</li>
+                <li
+                  onClick={() => {
+                    const resetItemList = itemList.filter((v2, i2) => {
+                      if (v2.id === v.id)
+                        return !v2 === v
                     })
-                    setItemList(resetItemState)
-                  }}
-                />
-                <p className={v.checked ? 'finished' : ''}>{v.item}</p>
-                <a>📝</a>
-                <a
-                  onClick={(i) => {
-                    const newItem = itemList.filter((v2, i2) => {
-                      return !v2 === v
-                    })
-                    // const newItem = [
-                    //   ...itemList.slice(0, i),
-                    //   ...itemList.slice(i + 1),
-                    // ]
-                    setItemList(newItem)
+                    setItemList(resetItemList)
                   }}
                 >
                   🗑️
-                </a>
+                </li>
               </div>
             )
           })}
+          </ul> 
       </div>
     </div>
   )
