@@ -1,3 +1,7 @@
+# TODO APP
+This project was for creating a list of tasks you need to complete or things that you want to do. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
