@@ -1,6 +1,9 @@
 # TODO APP
 This project was for creating a list of tasks you need to complete or things that you want to do. 
 
+## Bulit With
+React | JavaScript | HTML | CSS
+
 
 # Getting Started with Create React App
 
